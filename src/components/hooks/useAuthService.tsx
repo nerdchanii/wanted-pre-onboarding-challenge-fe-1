@@ -1,40 +1,66 @@
-import { InterfaceAuthenticationRequest } from "../../Apis/types";
+import {
+  InterfaceAuthenticationRequest,
+  InterfaceAuthServiceReturn,
+} from "../../Apis/types";
 import { useSetRecoilState } from "recoil";
 import { authState } from "../../store/authState";
 import { useCallback, useState } from "react";
 import authService from "../../services/auth.service";
 
-type UseAuthServiceReturn = [
-  boolean,
-  (
-    data: InterfaceAuthenticationRequest
-  ) => Promise<{ result: boolean; message: any }>
-];
-type UseAuthService = (type: "login" | "signup") => UseAuthServiceReturn;
+type AuthServiceMethod = "login" | "signup" | "logout";
 
-const useAuthService: UseAuthService = (type) => {
+interface UseAuthService {
+  (method: AuthServiceMethod): [boolean, Function];
+}
+
+const useAuthService: UseAuthService = (type: AuthServiceMethod) => {
   const setAuthState = useSetRecoilState(authState);
-
   const [loading, setLoading] = useState<boolean>(false);
 
-  const apis =
-    type === "login"
-      ? authService.login.bind(authService)
-      : authService.signup.bind(authService);
-
-  const actions = useCallback(
-    async ({ email, password }: InterfaceAuthenticationRequest) => {
-      setLoading(true);
-      const reponse = await apis({ email, password });
-      const { result, token, message } = reponse;
-      if (result) setAuthState({ email, token });
-      setLoading(false);
-      return { result, message };
+  const login = useCallback(
+    async (formData: InterfaceAuthenticationRequest) => {
+      const response = await call<InterfaceAuthServiceReturn>(
+        authService.login.bind(authService),
+        formData
+      );
+      if (response.result) setAuthState({ email: formData.email });
+      return response;
     },
-    [setAuthState, apis]
+    [setAuthState]
   );
 
-  return [loading, actions];
+  const signup = useCallback(
+    async (formData: InterfaceAuthenticationRequest) => {
+      const response = await call<InterfaceAuthServiceReturn>(
+        authService.signup.bind(authService),
+        formData
+      );
+      if (response.result) setAuthState({ email: formData.email });
+      return response;
+    },
+    [setAuthState]
+  );
+
+  const logout = useCallback(() => {
+    authService.logout();
+    setAuthState(null);
+  }, [setAuthState]);
+
+  const call = async <T,>(api: Function, data: any): Promise<T> => {
+    setLoading(true);
+    const response = await api(data);
+    setLoading(false);
+    return response;
+  };
+
+  switch (type) {
+    case "login":
+      return [loading, login];
+    case "signup":
+      return [loading, signup];
+    case "logout":
+      return [loading, logout];
+  }
 };
 
 export default useAuthService;

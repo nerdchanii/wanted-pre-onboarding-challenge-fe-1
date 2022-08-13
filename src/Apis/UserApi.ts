@@ -1,54 +1,51 @@
-import { AxiosError } from "axios";
+import { AxiosError, AxiosRequestConfig } from "axios";
+import { AUTH_API_URL } from "./constants";
 import {
   InterfaceApiCaller,
+  InterfaceAuthApiErrorResponse,
+  InterfaceAuthApiResponse,
   InterfaceAuthenticationRequest,
-  InterfaceErrorResponseData,
-  InterfaceUserApi,
+  InterfaceAuthApi,
 } from "./types";
 
-class UserApi implements InterfaceUserApi {
-  prefixPath: string;
+class AuthApi implements InterfaceAuthApi {
+  API_URL: typeof AUTH_API_URL;
   constructor(private ApiCallBehavior: InterfaceApiCaller) {
-    this.prefixPath = "/users";
+    this.API_URL = AUTH_API_URL;
+  }
+  
+  async login(loginForm: InterfaceAuthenticationRequest) {
+    return await this.call(this.API_URL.LOGIN(), loginForm);
   }
 
-  url(path: string): string {
-    return this.prefixPath + path;
+  async signup(signupForm: InterfaceAuthenticationRequest) {
+    return await this.call(this.API_URL.SIGNUP(), signupForm);
   }
 
-  async login({ email, password }: InterfaceAuthenticationRequest) {
-    try {
-      const response = await this.ApiCallBehavior.post(this.url("/login"), {
-        email,
-        password,
-      });
-      const { token, message } = response.data;
-      return { result: true, message, token };
-    } catch (e) {
-      const { response } = e as AxiosError;
-      if (response) {
-        const { details } = response.data as InterfaceErrorResponseData;
-        return { message: details, result: false, token: null };
-      }
+  logout(){
+    return this.ApiCallBehavior.removeAuth();
+  }
+
+  private async call(url: string, data?: any, config?: AxiosRequestConfig) {
+    try{
+      const response = await this.ApiCallBehavior.post<InterfaceAuthApiResponse>(url, data, config);
+      return this.sucess(response.data);
+    } catch(error){
+      return this.error(error);
     }
   }
 
-  async signup({ email, password }: InterfaceAuthenticationRequest) {
-    try {
-      const response = await this.ApiCallBehavior.post(this.url("/create"), {
-        email,
-        password,
-      });
-      const { token, message } = response.data;
-      return { result: true, message, token };
-    } catch (e) {
-      const { response } = e as AxiosError;
-      if (response) {
-        const { details } = response.data as InterfaceErrorResponseData;
-        return { message: details, result: false, token: null };
-      }
-    }
+
+
+  private sucess(responseData: InterfaceAuthApiResponse) {
+    this.ApiCallBehavior.setAuth(responseData.token);
+    return { message: responseData.message , result: true};
+  }
+
+  private error(error:unknown) {
+    if(!(error instanceof AxiosError<InterfaceAuthApiErrorResponse>)) return { message: 'unknown error' , result: false};
+    if(error.response) return{message: error.response.data.details, result: false};
+    return { message: error.message , result: false};
   }
 }
-
-export default UserApi;
+export default AuthApi;

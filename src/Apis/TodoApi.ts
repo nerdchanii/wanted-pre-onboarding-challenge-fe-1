@@ -1,35 +1,29 @@
-import { InterfaceApiCaller, InterfaceTodoApi, Todo } from "./types";
-
+import { InterfaceApiCaller, InterfaceTodoApi, Todo, TodoContent } from "./types";
+import { TODOS_API_URL } from "./constants";
 class TodoApi implements InterfaceTodoApi {
-  prefixPath: string;
+  API_URL: typeof TODOS_API_URL;
   constructor(private ApiCallBehavior: InterfaceApiCaller) {
-    this.prefixPath = "/todos";
-  }
-
-  url(path: string) {
-    return this.prefixPath + path;
+    this.API_URL = TODOS_API_URL;
   }
 
   async getTodos() {
-    return await this.ApiCallBehavior.get(this.url("/"));
+    return await this.ApiCallBehavior.get<Todo[]>(this.API_URL.GET_TODOS());
   }
 
   async getTodoById(id: string) {
-    return await this.ApiCallBehavior.get(this.url(`/${id}`));
+    return await this.ApiCallBehavior.get<Todo>(this.API_URL.GET_BY_ID(id));
   }
 
-  async createTodo(todo: Todo) {
-    const { title, content } = todo;
-    return await this.ApiCallBehavior.post(this.url("/"), { title, content });
+  async createTodo(todo: TodoContent) {
+    return await this.ApiCallBehavior.post<Todo>(this.API_URL.CREATE(), todo);
   }
 
-  async updateTodo(todo: Todo) {
-    const { id, title, content } = todo;
-    return await this.ApiCallBehavior.put(`/${id}`, { title, content });
+  async updateTodo({ id, ...todo} : {id: string, todo: TodoContent}) {
+    return await this.ApiCallBehavior.put<Todo>(this.API_URL.UPDATE(id), todo);
   }
 
   async deleteTodo(id: string) {
-    return await this.ApiCallBehavior.delete(`/${id}`);
+    return await this.ApiCallBehavior.delete<null>(`/${id}`);
   }
 }
 

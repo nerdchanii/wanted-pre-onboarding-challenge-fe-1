@@ -1,37 +1,25 @@
-import Apis from '../Apis/Apis';
-import { InterfaceAuthenticationRequest } from '../Apis/types';
+import { authApis } from "../Apis/Apis";
+import AuthApi from "../Apis/UserApi";
+import { InterfaceAuthenticationRequest } from "../Apis/types";
 
+class AuthService {
+  private api: AuthApi;
 
-
-class AuthService{
-  api: Apis;
-    
-  constructor(){
-    this.api = new Apis();
+  constructor() {
+    this.api = authApis;
   }
 
-  async login({email, password}:InterfaceAuthenticationRequest){
-      const {message, token, result} = await this.api.login({email, password});
-      if(result){
-        this.api.setToken(token)
-        localStorage.setItem('token', token)
-      }
-      return { result, message, token}
-  }
-
-  logout(){
-    this.api.removeToken();
+  async login({ email, password }: InterfaceAuthenticationRequest) {
+    return await this.api.login({ email, password });
   }
   
-  async signup({email, password}:InterfaceAuthenticationRequest){
-    const {message, token, result} = await this.api.signup({email, password});
-    if(result){
-      this.api.setToken(token)
-      localStorage.setItem('token', token)
-    }
-    return { result, message, token};
+  async signup({ email, password }: InterfaceAuthenticationRequest) {
+    return await this.api.signup({ email, password });    
   }
-  
+
+  logout() {
+    return this.api.logout();
+  }
 }
 
 export default new AuthService();

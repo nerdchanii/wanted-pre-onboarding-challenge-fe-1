@@ -1,9 +1,8 @@
-import { atom, RecoilState, selector, selectorFamily } from "recoil";
+import { atom, selector } from "recoil";
 // auth Atom
 
 interface IauthState {
     email: string;
-    token: string;
   }
 
 
@@ -19,6 +18,3 @@ export const isLoggedIn = selector({
     return auth !== null;
   }
 });
-
-
-

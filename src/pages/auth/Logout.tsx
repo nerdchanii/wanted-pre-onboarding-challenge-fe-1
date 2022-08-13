@@ -1,13 +1,14 @@
-import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { authState } from "../../store/authState";
+import React, { useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import useAuthService from "../../components/hooks/useAuthService";
 
 type Props = {};
 
 const Logout = (props: Props) => {
-  const logout = useSetRecoilState(authState);
-  logout(null);
+  const [, logout] = useAuthService("logout");
+  useEffect(() => {
+    logout();
+  }, [logout]);
 
   return <Navigate to="/" />;
 };

@@ -12,7 +12,6 @@ const Home = (props: Props) => {
       <div>
         <h1>Home</h1>
         <p>{auth.email}</p>
-        <p>{auth.token}</p>
         <Link to="/logout">로그아웃</Link>
         <Link to="/todolist">Todo</Link>
       </div>
