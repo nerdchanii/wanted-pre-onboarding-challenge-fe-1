@@ -19,7 +19,7 @@ const Redirections = ({ to, message, title }: Props) => {
   const navigate = useNavigate();
   useEffect(() => {
     (async () => {
-      await delay(1500);
+      await delay(2);
       navigate(to);
     })();
   }, [navigate, to]);
