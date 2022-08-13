@@ -30,18 +30,15 @@ const SignupContainer = () => {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { email, password } = inputs;
-    const { result, message } = await signup({
-      email,
-      password,
-    });
-    console.log(result, message);
-    if (!result)
-      setAlertMessages((prev) =>
-        prev.length > 4
-          ? [...prev, message].slice(prev.length - 4)
-          : [...prev, message]
-      );
-    else navigate("/", { replace: true });
+    const response = await signup({ email, password });
+    if (!response) return setAlertMessages(["서버 오류"]);
+    else {
+      if (response.result) {
+        navigate("/");
+      } else {
+        setAlertMessages([...alertMessages, response.message]);
+      }
+    }
   };
 
   return (

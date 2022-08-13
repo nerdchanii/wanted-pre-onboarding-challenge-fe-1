@@ -9,7 +9,7 @@ const LoginContainer = (props: Props) => {
   const navigate = useNavigate();
   const [loading, login] = useAuthService("login");
   const [alertMessages, setAlertMessages] = React.useState<string[]>([]);
-  const [loginRequestData, setLoginRequestData] = React.useState({
+  const [loginForm, setLoginForm] = React.useState({
     email: "",
     password: "",
   });
@@ -18,18 +18,16 @@ const LoginContainer = (props: Props) => {
     isValidPassword: false,
   });
 
-  const onChangeInputs = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { target } = e;
-    setLoginRequestData((prev) => ({ ...prev, [target.name]: target.value }));
+  const onChangeInputs = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    setLoginForm((prev) => ({ ...prev, [target.name]: target.value }));
     setFormValidations(
-      loginValidator({ ...loginRequestData, [target.name]: target.value })
+      loginValidator({ ...loginForm, [target.name]: target.value })
     );
   };
 
   const loginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { email, password } = loginRequestData;
-    const { result, message } = await login({ email, password });
+    const { result, message } = await login(loginForm);
     if (!result) setAlertMessages([...alertMessages, message]);
     else navigate("/");
   };
@@ -37,7 +35,7 @@ const LoginContainer = (props: Props) => {
   return (
     <LoginPresenter
       loginSubmit={loginSubmit}
-      loginInputValues={loginRequestData}
+      loginInputValues={loginForm}
       onChangeInputs={onChangeInputs}
       loading={loading}
       alertMessages={alertMessages}
