@@ -1,9 +1,8 @@
 import { authApis } from "../Apis/Apis";
-import AuthApi from "../Apis/UserApi";
-import { InterfaceAuthenticationRequest } from "../Apis/types";
+import { InterfaceAuthApi, InterfaceAuthenticationRequest } from "../Apis/types";
 
 class AuthService {
-  private api: AuthApi;
+  private api: InterfaceAuthApi;
 
   constructor() {
     this.api = authApis;
