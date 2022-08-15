@@ -1,4 +1,4 @@
-import { atom, RecoilState, selector } from "recoil";
+import { atom } from "recoil";
 import {Todo} from '../Apis/types';
 
 
