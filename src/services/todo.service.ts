@@ -1,6 +1,5 @@
 import { InterfaceTodoApi, Todo } from "../Apis/types";
 import { TodoContent } from "../Apis/types";
-import TodoApi from "../Apis/TodoApi";
 import { todoApis } from "../Apis/Apis";
 
 

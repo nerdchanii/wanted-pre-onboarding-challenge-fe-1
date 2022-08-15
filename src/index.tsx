@@ -5,15 +5,31 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { blue } from "@mui/material/colors";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: blue[300],
+    },
+    text: {
+      primary: blue[700],
+    },
+  },
+});
+
 root.render(
   <React.StrictMode>
     <RecoilRoot>
       <BrowserRouter>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </BrowserRouter>
     </RecoilRoot>
   </React.StrictMode>

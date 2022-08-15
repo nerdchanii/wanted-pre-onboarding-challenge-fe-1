@@ -13,7 +13,7 @@ const Home = (props: Props) => {
         <h1>Home</h1>
         <p>{auth.email}</p>
         <Link to="/logout">로그아웃</Link>
-        <Link to="/todolist">Todo</Link>
+        <Link to="/todos">Todo</Link>
       </div>
     );
   }
@@ -21,7 +21,7 @@ const Home = (props: Props) => {
     <div>
       <Link to="/login">로그인</Link>
       <Link to="/signup">회원가입</Link>
-      <Link to="/todolist">TodoList</Link>
+      <Link to="/todos">TodoList</Link>
     </div>
   );
 };
