@@ -11,7 +11,7 @@ const ItemLayout = ({ id, children }: Props) => {
   const navigate = useNavigate();
 
   return (
-    <Card sx={{ marginY: 2, overflow: "visible" }}>
+    <Card sx={{ marginY: 1, overflow: "visible" }}>
       <CardActionArea onClick={() => navigate(id)}>
         <Grid container direction="column">
           <Grid container item direction="row" justifyContent="space-between">

@@ -1,5 +1,7 @@
 import React from "react";
 import { Button, ButtonGroup } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Add } from "@mui/icons-material";
 
 const TodoBehaviorButtons = ({
   editable,
@@ -12,8 +14,12 @@ const TodoBehaviorButtons = ({
   onSave?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onRemove?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
+  const navigate = useNavigate();
   return (
     <ButtonGroup>
+      <Button variant="outlined" onClick={() => navigate("/todos/new")}>
+        <Add />
+      </Button>
       {editable ? (
         <Button variant="outlined" onClick={onSave}>
           저장

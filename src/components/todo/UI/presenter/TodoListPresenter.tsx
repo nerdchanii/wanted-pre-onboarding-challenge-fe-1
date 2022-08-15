@@ -25,8 +25,17 @@ const TodoListPresenter = ({ todos }: Props) => {
         item
         container
         flexWrap={"nowrap"}
-        overflow="scroll"
         direction={"column"}
+        overflow="scroll"
+        sx={{
+          "scrollbar-width": "none",
+          "&::-webkit-scrollbar": {
+            width: "0px",
+            background: "transparent",
+          },
+
+          scrollbarWidth: "thin",
+        }}
         flex={1}
       >
         <Lists todos={todos} />
