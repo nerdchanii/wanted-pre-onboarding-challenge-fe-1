@@ -64,11 +64,24 @@ export interface Todo extends TodoContent, TodoMetaData{}
 
 export interface InterfaceTodoApi{
   API_URL: typeof TODOS_API_URL;
-  getTodos(): Promise<AxiosResponse<Todo[]>>;
-  getTodoById(id:string): Promise<AxiosResponse<Todo>>;
-  createTodo(todo:TodoContent): Promise<AxiosResponse<Todo>>;
-  updateTodo({id, ...todo}:{id:string, todo:TodoContent}): Promise<AxiosResponse<Todo>>;
-  deleteTodo(id:string): Promise<AxiosResponse<null>>;
+  getTodos(): Promise<TodoApiResponse<Todo[]>>;
+  getTodoById(id:string): Promise<TodoApiResponse<Todo>>;
+  createTodo(todo:TodoContent): Promise<TodoApiResponse<Todo>>;
+  updateTodo(todo:TodoContent): Promise<TodoApiResponse<Todo>>;
+  deleteTodo(id:string): Promise<TodoApiResponse<null>>;
 }
 
+
+export interface InterfaceTodoApiErrorResponse{
+  result: false;
+  details: string;
+}
+
+export interface InterfaceTodoApiSuccess<T>{
+  data: T;
+  result: true;
+}
+
+
+export type TodoApiResponse<T> =InterfaceTodoApiErrorResponse | InterfaceTodoApiSuccess<T>;
 
