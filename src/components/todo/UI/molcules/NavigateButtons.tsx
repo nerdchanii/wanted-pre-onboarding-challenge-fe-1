@@ -1,7 +1,7 @@
-import React from "react";
-import { ButtonGroup, Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import React from 'react';
+import { ButtonGroup, Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { ArrowBack, ArrowForward } from '@mui/icons-material';
 
 const NavigateButtons = () => {
   const navigate = useNavigate();

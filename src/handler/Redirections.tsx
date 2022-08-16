@@ -4,10 +4,10 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-} from "@mui/material";
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { delay } from "../utils/delay";
+} from '@mui/material';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { delay } from '../utils/delay';
 
 type Props = {
   to: string;
@@ -27,11 +27,11 @@ const Redirections = ({ to, message, title }: Props) => {
   return (
     <Dialog open>
       <DialogTitle marginY={2}>{title}</DialogTitle>
-      <DialogContentText sx={{ display: "flex", justifyContent: "center" }}>
+      <DialogContentText sx={{ display: 'flex', justifyContent: 'center' }}>
         {message}
       </DialogContentText>
       <DialogContent
-        sx={{ display: "flex", justifyContent: "center", marginY: 2 }}
+        sx={{ display: 'flex', justifyContent: 'center', marginY: 2 }}
       >
         <CircularProgress />
       </DialogContent>

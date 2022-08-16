@@ -1,11 +1,10 @@
-
 /**
  * Delay Function
- * 
+ *
  * @param {number} sec  - time to delay in seconds
- * @returns 
+ * @returns
  */
 
 export function delay(sec: number) {
-    return new Promise(resolve => setTimeout(resolve, sec*1000));
+  return new Promise((resolve) => setTimeout(resolve, sec * 1000));
 }

@@ -1,15 +1,15 @@
-import React from "react";
-import { Todo } from "../../../../Apis/types";
-import TodoDate from "../Atoms/TodoDate";
-import TodoItem from "../../TodoItem";
-import DetailActionButtons from "../molcules/DetailActionButtons";
-import { Card, CardActions } from "@mui/material";
+import React from 'react';
+import { Todo } from '../../../../Apis/types';
+import TodoDate from '../Atoms/TodoDate';
+import TodoItem from '../../TodoItem';
+import DetailActionButtons from '../molcules/DetailActionButtons';
+import { Card, CardActions } from '@mui/material';
 
 type Props = {
   todo: Todo;
   onRemove: (e: React.MouseEvent<HTMLButtonElement>) => void;
   onChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   onSave: (e: React.MouseEvent<HTMLButtonElement>) => void;
   editable: boolean;
@@ -29,14 +29,14 @@ const TodolistDetailPresenter = ({
   return (
     <Card
       sx={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
         p: 1,
-        boxSizing: "border-box",
+        boxSizing: 'border-box',
       }}
     >
-      <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
+      <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
         <DetailActionButtons
           editable={editable}
           onEdit={(e: React.MouseEvent<HTMLButtonElement>) =>

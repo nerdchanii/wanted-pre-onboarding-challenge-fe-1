@@ -1,5 +1,5 @@
-import { Alert, Container } from "@mui/material";
-import React from "react";
+import { Alert, Container } from '@mui/material';
+import React from 'react';
 
 type Props = {
   alertMessages: string[];
@@ -8,7 +8,7 @@ type Props = {
 
 const AlertContainer = ({ alertMessages, setAlertMessages }: Props) => {
   return (
-    <Container sx={{ position: "absolute" }}>
+    <Container sx={{ position: 'absolute' }}>
       {alertMessages.map((alertMessage, index) => (
         <Alert
           key={index}

@@ -1,16 +1,15 @@
-
-const decode = (token:string) => {
+const decode = (token: string) => {
   const [header, payload, signature] = token.split('.');
-  
-  try{ 
+
+  try {
     return JSON.parse(window.atob(payload));
-  }catch(e){
+  } catch (e) {
     return window.atob(payload);
   }
-}
+};
 
 export const getAuth = (token: string) => {
   return decode(token);
-}
+};
 
-export default { getAuth }
+export default { getAuth };

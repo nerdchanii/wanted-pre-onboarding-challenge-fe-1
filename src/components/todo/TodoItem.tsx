@@ -1,8 +1,8 @@
-import React from "react";
-import { CardContent, Divider, SxProps } from "@mui/material";
-import TodoContent from "./UI/Atoms/TodoContent";
-import TodoTitle from "./UI/Atoms/TodoTitle";
-import { TodoContent as TypeTodoContent } from "../../Apis/types";
+import React from 'react';
+import { CardContent, Divider, SxProps } from '@mui/material';
+import TodoContent from './UI/Atoms/TodoContent';
+import TodoTitle from './UI/Atoms/TodoTitle';
+import { TodoContent as TypeTodoContent } from '../../Apis/types';
 
 const TodoItem = ({
   todo: { title, content },
@@ -14,15 +14,15 @@ const TodoItem = ({
   todo: TypeTodoContent;
   editable: boolean;
   onChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
 }) => {
   return (
     <CardContent
-      sx={{ ...sx, mx: 1, display: "flex", flexDirection: "column" }}
+      sx={{ ...sx, mx: 1, display: 'flex', flexDirection: 'column' }}
     >
       <TodoTitle
-        id={"title"}
+        id={'title'}
         onChange={onChange}
         value={title}
         editable={editable}
@@ -30,7 +30,7 @@ const TodoItem = ({
       />
       <Divider flexItem sx={{ my: 2 }} />
       <TodoContent
-        HTMLid={"content"}
+        HTMLid={'content'}
         onChange={onChange}
         value={content}
         editable={editable}

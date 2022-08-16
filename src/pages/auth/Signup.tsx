@@ -1,8 +1,8 @@
-import React from "react";
-import { useRecoilValue } from "recoil";
-import { isLoggedIn } from "../../store/authState";
-import Redirections from "../../handler/Redirections";
-import SignupContainer from "../../components/signup/SignupContainer";
+import React from 'react';
+import { useRecoilValue } from 'recoil';
+import { isLoggedIn } from '../../store/authState';
+import Redirections from '../../handler/Redirections';
+import SignupContainer from '../../components/signup/SignupContainer';
 
 type Props = {};
 

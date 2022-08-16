@@ -1,8 +1,8 @@
-import { LoadingButton } from "@mui/lab";
-import { FormControl, Grid, Link, TextField, Typography } from "@mui/material";
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
-import AlertContainer from "../Alert/AlertContainer";
+import { LoadingButton } from '@mui/lab';
+import { FormControl, Grid, Link, TextField, Typography } from '@mui/material';
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import AlertContainer from '../Alert/AlertContainer';
 
 type Props = {
   signupSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -43,7 +43,7 @@ const SignupPresenter = ({
       <Grid
         container
         alignItems="center"
-        minHeight={"100vh"}
+        minHeight={'100vh'}
         justifyContent="center"
       >
         <Grid item xs={8} sm={6} md={4}>
@@ -68,13 +68,13 @@ const SignupPresenter = ({
                 variant="outlined"
                 label="email"
                 required
-                error={!isValidEmail && email !== ""}
+                error={!isValidEmail && email !== ''}
                 helperText={
                   isValidEmail
-                    ? " "
-                    : email === ""
-                    ? " "
-                    : "올바른 이메일 형식이 아닙니다"
+                    ? ' '
+                    : email === ''
+                    ? ' '
+                    : '올바른 이메일 형식이 아닙니다'
                 }
                 sx={sx.Input}
               />
@@ -87,13 +87,13 @@ const SignupPresenter = ({
                 onChange={onChangeInputs}
                 color="primary"
                 required
-                error={!isValidPassword && password !== ""}
+                error={!isValidPassword && password !== ''}
                 helperText={
                   isValidPassword
-                    ? " "
-                    : password === ""
-                    ? " "
-                    : "올바른 비밀번호 형식이 아닙니다"
+                    ? ' '
+                    : password === ''
+                    ? ' '
+                    : '올바른 비밀번호 형식이 아닙니다'
                 }
                 sx={sx.Input}
               />
@@ -106,13 +106,13 @@ const SignupPresenter = ({
                 onChange={onChangeInputs}
                 color="primary"
                 required
-                error={!isValidPasswordConfirm && passwordConfirm !== ""}
+                error={!isValidPasswordConfirm && passwordConfirm !== ''}
                 helperText={
                   isValidPasswordConfirm
-                    ? " "
-                    : passwordConfirm === ""
-                    ? " "
-                    : "비밀번호가 일치하지 않습니다"
+                    ? ' '
+                    : passwordConfirm === ''
+                    ? ' '
+                    : '비밀번호가 일치하지 않습니다'
                 }
                 sx={sx.Input}
               />
@@ -132,7 +132,7 @@ const SignupPresenter = ({
               <Typography
                 variant="body2"
                 align="right"
-                sx={{ textAlign: "end", marginY: 2 }}
+                sx={{ textAlign: 'end', marginY: 2 }}
               >
                 아이디가 있으신가요?
                 <Link
@@ -140,7 +140,7 @@ const SignupPresenter = ({
                   to="/login"
                   color="primary"
                   paddingLeft={2}
-                  sx={{ textDecoration: "none" }}
+                  sx={{ textDecoration: 'none' }}
                 >
                   로그인
                 </Link>
@@ -157,23 +157,23 @@ export default SignupPresenter;
 
 const sx = {
   Title: {
-    ":after": {
+    ':after': {
       content: '"✍️"',
-      display: "inline",
-      width: "100%",
-      height: "1px",
-      backgroundColor: "primary",
-      marginLeft: "0.5rem",
+      display: 'inline',
+      width: '100%',
+      height: '1px',
+      backgroundColor: 'primary',
+      marginLeft: '0.5rem',
     },
   },
   Input: {
-    width: "100%",
+    width: '100%',
     m: 1,
   },
   Button: {
     m: 1,
-    height: "100%",
-    width: "100%",
-    whiteSpace: "nowrap",
+    height: '100%',
+    width: '100%',
+    whiteSpace: 'nowrap',
   },
 };

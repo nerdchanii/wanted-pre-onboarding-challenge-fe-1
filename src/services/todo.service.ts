@@ -1,16 +1,15 @@
-import { InterfaceTodoApi, Todo } from "../Apis/types";
-import { TodoContent } from "../Apis/types";
-import { todoApis } from "../Apis/Apis";
-
+import { InterfaceTodoApi, Todo } from '../Apis/types';
+import { TodoContent } from '../Apis/types';
+import { todoApis } from '../Apis/Apis';
 
 class TodoService {
   private api: InterfaceTodoApi;
 
-  constructor(){ 
+  constructor() {
     this.api = todoApis;
   }
 
-  async getTodos(){
+  async getTodos() {
     return await this.api.getTodos();
   }
 
@@ -22,7 +21,7 @@ class TodoService {
     return await this.api.createTodo(todo);
   }
 
-  async updateTodo(todo:Todo): Promise<any> {
+  async updateTodo(todo: Todo): Promise<any> {
     return await this.api.updateTodo(todo);
   }
 

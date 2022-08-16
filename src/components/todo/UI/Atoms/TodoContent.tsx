@@ -1,10 +1,10 @@
-import { TextareaAutosize } from "@mui/material";
+import { TextareaAutosize } from '@mui/material';
 
 type TodoContentProps = {
   value: string | undefined;
   HTMLid: string;
   onChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   editable: boolean;
   label: string;
@@ -28,13 +28,13 @@ const TodoContent = ({
       name={HTMLid}
       onChange={onChange}
       style={{
-        border: "none",
-        fontSize: "1.25rem",
-        lineHeight: "2rem",
-        width: "100%",
+        border: 'none',
+        fontSize: '1.25rem',
+        lineHeight: '2rem',
+        width: '100%',
         flex: 1,
-        outline: "none",
-        cursor: editable ? "text" : "default",
+        outline: 'none',
+        cursor: editable ? 'text' : 'default',
       }}
     />
   );

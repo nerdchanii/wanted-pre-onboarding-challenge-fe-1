@@ -1,5 +1,5 @@
-import React from "react";
-import { Grid, Input, InputLabel } from "@mui/material";
+import React from 'react';
+import { Grid, Input, InputLabel } from '@mui/material';
 
 const TodoTitle = ({
   id,
@@ -19,9 +19,9 @@ const TodoTitle = ({
       <Grid item alignItems="center">
         <InputLabel
           sx={{
-            fontSize: "1.5rem",
-            marginY: "1rem",
-            ":after": { display: "inline", content: '":"' },
+            fontSize: '1.5rem',
+            marginY: '1rem',
+            ':after': { display: 'inline', content: '":"' },
           }}
           color="primary"
           htmlFor={id}
@@ -40,10 +40,10 @@ const TodoTitle = ({
           onChange={onChange}
           sx={{
             mx: 2,
-            border: "none",
-            fontSize: "1.25rem",
-            height: "100%",
-            cursor: editable ? "text" : "default",
+            border: 'none',
+            fontSize: '1.25rem',
+            height: '100%',
+            cursor: editable ? 'text' : 'default',
           }}
         />
       </Grid>

@@ -1,13 +1,13 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import { InterfaceApiCaller } from "./types";
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { InterfaceApiCaller } from './types';
 
 /**
  * *ApiCaller*
  *
  *
  * Api객체의 api 호출을 담당하는 클래스입니다.
- * 
- * api 호출 로직을 랩핑해서 역할을 부여합니다. 
+ *
+ * api 호출 로직을 랩핑해서 역할을 부여합니다.
  *
  * @interface InterfaceApiCaller
  * @member caller - api call behavior
@@ -24,14 +24,14 @@ class ApiCaller implements InterfaceApiCaller {
    * @param {AxiosRequestConfig} config - axios config
    */
   constructor(baseURL: string, config?: AxiosRequestConfig) {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     this.caller = axios.create({
       baseURL,
       ...config,
       headers: {
         ...config?.headers,
-        Authorization: token ? token : ""
-      }
+        Authorization: token ? token : '',
+      },
     });
   }
 
@@ -55,10 +55,13 @@ class ApiCaller implements InterfaceApiCaller {
    * @returns {void}
    * @memberof ApiCaller
    */
-  async post<T>(url: string, data: any, config?: AxiosRequestConfig): Promise<T> {
+  async post<T>(
+    url: string,
+    data: any,
+    config?: AxiosRequestConfig,
+  ): Promise<T> {
     return await this.caller.post(url, data, config);
   }
-
 
   /**
    * Put method for api call
@@ -69,10 +72,13 @@ class ApiCaller implements InterfaceApiCaller {
    * @param {AxiosRequestConfig} config - axios config
    * @returns {Promise<T>} - return type of api call
    */
-  async put<T>(url: string, data: any, config?: AxiosRequestConfig): Promise<T> {
+  async put<T>(
+    url: string,
+    data: any,
+    config?: AxiosRequestConfig,
+  ): Promise<T> {
     return await this.caller.put(url, data, config);
   }
-
 
   /**
    * Delete method for api call
@@ -86,10 +92,12 @@ class ApiCaller implements InterfaceApiCaller {
     return await this.caller.delete(url, config);
   }
 
-  private interceptor(onFulfilled?: (value: any) => any, onRejected?: (reason: any) => any) {
+  private interceptor(
+    onFulfilled?: (value: any) => any,
+    onRejected?: (reason: any) => any,
+  ) {
     this.caller.interceptors.response.use(onFulfilled, onRejected);
   }
-
 
   /**
    * set token for api call
@@ -116,8 +124,6 @@ class ApiCaller implements InterfaceApiCaller {
     localStorage.removeItem('token');
     this.caller.defaults.headers.common['Authorization'] = '';
   }
-
-
 }
 
 export default ApiCaller;

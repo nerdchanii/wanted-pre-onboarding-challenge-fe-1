@@ -1,7 +1,7 @@
-import { Grid, LinearProgress } from "@mui/material";
-import React from "react";
-import { Todo } from "../../../../Apis/types";
-import TodolistItem from "./Item";
+import { Grid, LinearProgress } from '@mui/material';
+import React from 'react';
+import { Todo } from '../../../../Apis/types';
+import TodolistItem from './Item';
 
 type Props = {
   todos: Array<Todo>;

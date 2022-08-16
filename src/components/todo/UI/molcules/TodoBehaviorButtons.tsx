@@ -1,7 +1,7 @@
-import React from "react";
-import { Button, ButtonGroup } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { Add } from "@mui/icons-material";
+import React from 'react';
+import { Button, ButtonGroup } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Add } from '@mui/icons-material';
 
 const TodoBehaviorButtons = ({
   editable,
@@ -17,7 +17,7 @@ const TodoBehaviorButtons = ({
   const navigate = useNavigate();
   return (
     <ButtonGroup>
-      <Button variant="outlined" onClick={() => navigate("/todos/new")}>
+      <Button variant="outlined" onClick={() => navigate('/todos/new')}>
         <Add />
       </Button>
       {editable ? (

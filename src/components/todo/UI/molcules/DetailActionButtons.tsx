@@ -1,7 +1,7 @@
-import { CardActions, Grid } from "@mui/material";
-import React from "react";
-import NavigateButtons from "./NavigateButtons";
-import TodoBehaviorButtons from "./TodoBehaviorButtons";
+import { CardActions, Grid } from '@mui/material';
+import React from 'react';
+import NavigateButtons from './NavigateButtons';
+import TodoBehaviorButtons from './TodoBehaviorButtons';
 
 type Props = {
   editable: boolean;
@@ -12,7 +12,7 @@ type Props = {
 
 const DetailActionButtons = ({ editable, onEdit, onSave, onRemove }: Props) => {
   return (
-    <Grid container flexDirection={"row"} justifyContent="space-between">
+    <Grid container flexDirection={'row'} justifyContent="space-between">
       <Grid item>
         <NavigateButtons />
       </Grid>
