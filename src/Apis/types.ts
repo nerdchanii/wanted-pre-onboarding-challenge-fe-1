@@ -74,11 +74,11 @@ export interface Todo extends TodoContent, TodoMetaData {}
 
 export interface InterfaceTodoApi {
   API_URL: typeof TODOS_API_URL;
-  getTodos(): Promise<TodoApiResponse<Todo[]>>;
-  getTodoById(id: string): Promise<TodoApiResponse<Todo>>;
-  createTodo(todo: TodoContent): Promise<TodoApiResponse<Todo>>;
-  updateTodo(todo: TodoContent): Promise<TodoApiResponse<Todo>>;
-  deleteTodo(id: string): Promise<TodoApiResponse<null>>;
+  getTodos(): Promise<Todo[]>;
+  getTodoById(id: string): Promise<Todo>;
+  createTodo(todo: TodoContent): Promise<Todo>;
+  updateTodo(todo: TodoContent): Promise<Todo>;
+  deleteTodo(id: string): Promise<null>;
 }
 
 export interface InterfaceTodoApiErrorResponse {
