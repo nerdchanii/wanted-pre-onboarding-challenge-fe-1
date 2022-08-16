@@ -38,9 +38,8 @@ const TodolistDetailContainer = (props: Props) => {
   useEffect(() => {
     async function fetchTodo() {
       if (id !== undefined) {
-        const response = await todoService.getTodoById(id);
-        if (response.result) setTodo(response.data);
-        else console.log(response.details);
+        const todo = await todoService.getTodoById(id);
+        setTodo(todo);
       }
     }
     fetchTodo();

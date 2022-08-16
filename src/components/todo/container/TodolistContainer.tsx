@@ -15,12 +15,12 @@ const TodoListContainer = (props: Props) => {
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
-      const response = await todoService.getTodos();
-      if (response.result) setTodos(response.data);
+      const FetchedTodos = await todoService.getTodos();
+      setTodos(FetchedTodos);
       setLoading(false);
     }
     fetchData();
-  }, []);
+  }, [setTodos]);
 
   if (loading) return <LinearProgress />;
 

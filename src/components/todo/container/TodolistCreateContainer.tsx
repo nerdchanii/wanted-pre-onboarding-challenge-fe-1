@@ -20,11 +20,9 @@ const TodolistCreateContainer = () => {
   };
 
   const onCreate = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    const response = await todoService.createTodo(todoContent);
-    if (response.result) {
-      setTodos((todos) => [...todos, response.data]);
-      navigate(`/todos/${response.data.id}`, { replace: true });
-    } else console.log(response.details);
+    const todo = await todoService.createTodo(todoContent);
+    setTodos((todos) => [...todos, todo]);
+    navigate(`/todos/${todo.id}`, { replace: true });
   };
 
   return (

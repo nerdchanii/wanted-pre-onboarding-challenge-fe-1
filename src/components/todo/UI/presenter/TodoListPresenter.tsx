@@ -28,13 +28,11 @@ const TodoListPresenter = ({ todos }: Props) => {
         direction={'column'}
         overflow="scroll"
         sx={{
-          'scrollbar-width': 'none',
+          scrollbarWidth: 'none',
           '&::-webkit-scrollbar': {
             width: '0px',
             background: 'transparent',
           },
-
-          scrollbarWidth: 'thin',
         }}
         flex={1}
       >
