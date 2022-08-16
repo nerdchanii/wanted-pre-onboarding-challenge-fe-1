@@ -1,5 +1,5 @@
 ---
-name: 🛠 Refactor
+name: 🪛 Refactor
 about: File a Refactor/issue
 title: '[Refactor] <title>'
 labels: Refactor
