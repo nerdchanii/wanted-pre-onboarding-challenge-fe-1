@@ -1,13 +1,13 @@
 import {
   InterfaceAuthenticationRequest,
   InterfaceAuthServiceReturn,
-} from "../../Apis/types";
-import { useSetRecoilState } from "recoil";
-import { authState } from "../../store/authState";
-import { useCallback, useState } from "react";
-import authService from "../../services/auth.service";
+} from '../../Apis/types';
+import { useSetRecoilState } from 'recoil';
+import { authState } from '../../store/authState';
+import { useCallback, useState } from 'react';
+import authService from '../../services/auth.service';
 
-type AuthServiceMethod = "login" | "signup" | "logout";
+type AuthServiceMethod = 'login' | 'signup' | 'logout';
 
 interface UseAuthService {
   (method: AuthServiceMethod): [boolean, Function];
@@ -21,24 +21,24 @@ const useAuthService: UseAuthService = (type: AuthServiceMethod) => {
     async (formData: InterfaceAuthenticationRequest) => {
       const response = await call<InterfaceAuthServiceReturn>(
         authService.login.bind(authService),
-        formData
+        formData,
       );
       if (response.result) setAuthState({ email: formData.email });
       return response;
     },
-    [setAuthState]
+    [setAuthState],
   );
 
   const signup = useCallback(
     async (formData: InterfaceAuthenticationRequest) => {
       const response = await call<InterfaceAuthServiceReturn>(
         authService.signup.bind(authService),
-        formData
+        formData,
       );
       if (response.result) setAuthState({ email: formData.email });
       return response;
     },
-    [setAuthState]
+    [setAuthState],
   );
 
   const logout = useCallback(() => {
@@ -54,11 +54,11 @@ const useAuthService: UseAuthService = (type: AuthServiceMethod) => {
   };
 
   switch (type) {
-    case "login":
+    case 'login':
       return [loading, login];
-    case "signup":
+    case 'signup':
       return [loading, signup];
-    case "logout":
+    case 'logout':
       return [loading, logout];
   }
 };

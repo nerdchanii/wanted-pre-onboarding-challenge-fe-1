@@ -1,5 +1,5 @@
-import { Container, SxProps } from "@mui/material";
-import React from "react";
+import { Container, SxProps } from '@mui/material';
+import React from 'react';
 
 type Props = {
   children: React.ReactNode;

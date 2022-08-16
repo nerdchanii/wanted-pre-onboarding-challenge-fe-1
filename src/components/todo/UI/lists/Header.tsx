@@ -1,6 +1,6 @@
-import { Grid, Typography } from "@mui/material";
-import React from "react";
-import AddButton from "../Atoms/AddTodoItem";
+import { Grid, Typography } from '@mui/material';
+import React from 'react';
+import AddButton from '../Atoms/AddTodoItem';
 
 type Props = {};
 
@@ -10,9 +10,9 @@ const Header = (props: Props) => {
       <Grid item flex={1}>
         <Typography
           variant="h5"
-          textAlign={"center"}
+          textAlign={'center'}
           sx={{
-            fontWeight: "bold",
+            fontWeight: 'bold',
           }}
           py={1}
         >

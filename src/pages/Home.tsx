@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { authState } from "../store/authState";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { authState } from '../store/authState';
 
 type Props = {};
 

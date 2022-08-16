@@ -1,17 +1,17 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import SignupPresenter from "./SignupPresenter";
-import useAuthService from "../hooks/useAuthService";
-import { signUpValidator } from "../../utils/validator";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import SignupPresenter from './SignupPresenter';
+import useAuthService from '../hooks/useAuthService';
+import { signUpValidator } from '../../utils/validator';
 
 // 상태와 action, api 주입
 const SignupContainer = () => {
-  const [loading, signup] = useAuthService("signup");
+  const [loading, signup] = useAuthService('signup');
 
   const [inputs, setInputs] = React.useState({
-    email: "",
-    password: "",
-    passwordConfirm: "",
+    email: '',
+    password: '',
+    passwordConfirm: '',
   });
   const [alertMessages, setAlertMessages] = React.useState<string[]>([]);
   const [validations, setValidations] = React.useState({
@@ -31,10 +31,10 @@ const SignupContainer = () => {
     e.preventDefault();
     const { email, password } = inputs;
     const response = await signup({ email, password });
-    if (!response) return setAlertMessages(["서버 오류"]);
+    if (!response) return setAlertMessages(['서버 오류']);
     else {
       if (response.result) {
-        navigate("/");
+        navigate('/');
       } else {
         setAlertMessages([...alertMessages, response.message]);
       }

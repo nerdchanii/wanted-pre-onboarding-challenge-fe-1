@@ -5,11 +5,11 @@ import {
   TextField,
   Typography,
   Divider,
-} from "@mui/material";
-import LoadingButton from "@mui/lab/LoadingButton";
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
-import AlertContainer from "../Alert/AlertContainer";
+} from '@mui/material';
+import LoadingButton from '@mui/lab/LoadingButton';
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import AlertContainer from '../Alert/AlertContainer';
 
 type Props = {
   loginInputValues: {
@@ -47,7 +47,7 @@ const LoginPresenter = (props: Props) => {
       <Grid
         container
         alignItems="center"
-        minHeight={"100vh"}
+        minHeight={'100vh'}
         justifyContent="center"
       >
         <Grid item xs={8} sm={6} md={4}>
@@ -59,13 +59,13 @@ const LoginPresenter = (props: Props) => {
                 align="left"
                 marginY={2}
                 sx={{
-                  ":after": {
+                  ':after': {
                     content: '"🙋🏻‍♂️"',
-                    display: "inline",
-                    width: "100%",
-                    height: "1px",
-                    backgroundColor: "primary",
-                    marginLeft: "0.5rem",
+                    display: 'inline',
+                    width: '100%',
+                    height: '1px',
+                    backgroundColor: 'primary',
+                    marginLeft: '0.5rem',
                   },
                 }}
               >
@@ -73,11 +73,11 @@ const LoginPresenter = (props: Props) => {
               </Typography>
               <Divider />
               <TextField
-                error={email !== "" && !isValidEmail}
+                error={email !== '' && !isValidEmail}
                 helperText={
-                  isValidEmail || email === ""
-                    ? " "
-                    : "올바른 이메일을 입력해주세요"
+                  isValidEmail || email === ''
+                    ? ' '
+                    : '올바른 이메일을 입력해주세요'
                 }
                 FormHelperTextProps={
                   isValidPassword ? { error: false } : { error: true }
@@ -91,12 +91,12 @@ const LoginPresenter = (props: Props) => {
                 variant="outlined"
                 label="email"
                 required
-                sx={{ flex: 1, width: "100%" }}
+                sx={{ flex: 1, width: '100%' }}
               />
               <TextField
-                error={password !== "" && !isValidPassword}
+                error={password !== '' && !isValidPassword}
                 helperText={
-                  isValidPassword ? " " : "올바른 비밀번호를 입력해주세요"
+                  isValidPassword ? ' ' : '올바른 비밀번호를 입력해주세요'
                 }
                 FormHelperTextProps={
                   isValidPassword ? { error: false } : { error: true }
@@ -109,7 +109,7 @@ const LoginPresenter = (props: Props) => {
                 onChange={onChangeInputs}
                 color="primary"
                 required
-                sx={{ flex: 1, width: "100%" }}
+                sx={{ flex: 1, width: '100%' }}
               />
               <LoadingButton
                 loading={loading}
@@ -119,11 +119,11 @@ const LoginPresenter = (props: Props) => {
                 variant="contained"
                 disabled={!(isValidEmail && isValidPassword)}
                 sx={{
-                  height: "100%",
-                  whiteSpace: "nowrap",
-                  width: "100%",
-                  "[disabled]": {
-                    cursor: "not-allowed",
+                  height: '100%',
+                  whiteSpace: 'nowrap',
+                  width: '100%',
+                  '[disabled]': {
+                    cursor: 'not-allowed',
                   },
                 }}
               >
@@ -132,7 +132,7 @@ const LoginPresenter = (props: Props) => {
               <Typography
                 variant="body2"
                 align="center"
-                sx={{ display: "block", textAlign: "end", marginY: 2 }}
+                sx={{ display: 'block', textAlign: 'end', marginY: 2 }}
               >
                 아직 회원이 아니라면?
                 <Link
@@ -140,7 +140,7 @@ const LoginPresenter = (props: Props) => {
                   to="/signup"
                   color="primary"
                   paddingLeft={2}
-                  sx={{ textDecoration: "none" }}
+                  sx={{ textDecoration: 'none' }}
                 >
                   회원가입
                 </Link>

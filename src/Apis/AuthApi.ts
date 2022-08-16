@@ -1,11 +1,11 @@
-import { AxiosRequestConfig } from "axios";
-import { AUTH_API_URL } from "./constants";
+import { AxiosRequestConfig } from 'axios';
+import { AUTH_API_URL } from './constants';
 import {
   InterfaceApiCaller,
   InterfaceAuthApiResponse,
   InterfaceAuthenticationRequest,
   InterfaceAuthApi,
-} from "./types";
+} from './types';
 
 class AuthApi implements InterfaceAuthApi {
   API_URL: typeof AUTH_API_URL;
@@ -29,7 +29,7 @@ class AuthApi implements InterfaceAuthApi {
     const response = await this.ApiCallBehavior.post<InterfaceAuthApiResponse>(
       url,
       data,
-      config
+      config,
     );
     return this.sucess(response.data);
   }

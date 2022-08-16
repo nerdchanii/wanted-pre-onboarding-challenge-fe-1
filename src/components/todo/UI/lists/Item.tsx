@@ -1,8 +1,8 @@
-import React from "react";
-import { CardContent, CardHeader } from "@mui/material";
-import { Todo } from "../../../../Apis/types";
-import TodoDate from "../Atoms/TodoDate";
-import ItemLayout from "./ItemLayout";
+import React from 'react';
+import { CardContent, CardHeader } from '@mui/material';
+import { Todo } from '../../../../Apis/types';
+import TodoDate from '../Atoms/TodoDate';
+import ItemLayout from './ItemLayout';
 
 type Props = {
   todo: Todo;

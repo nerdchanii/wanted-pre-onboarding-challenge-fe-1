@@ -1,7 +1,7 @@
-import React from "react";
-import { useRecoilValue } from "recoil";
-import Redirections from "./Redirections";
-import { isLoggedIn } from "../store/authState";
+import React from 'react';
+import { useRecoilValue } from 'recoil';
+import Redirections from './Redirections';
+import { isLoggedIn } from '../store/authState';
 
 const AuthHandler = (WrappedComponent: any) => {
   const isLogin = useRecoilValue(isLoggedIn);

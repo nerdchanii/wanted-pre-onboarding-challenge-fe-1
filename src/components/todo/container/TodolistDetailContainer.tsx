@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
-import { Todo } from "../../../Apis/types";
-import todoService from "../../../services/todo.service";
-import todosState from "../../../store/todosState";
-import TodolistDetailPresenter from "../UI/presenter/DetailsPresenter";
+import React, { useEffect } from 'react';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
+import { Todo } from '../../../Apis/types';
+import todoService from '../../../services/todo.service';
+import todosState from '../../../store/todosState';
+import TodolistDetailPresenter from '../UI/presenter/DetailsPresenter';
 
 type Props = {};
 
@@ -15,7 +15,7 @@ const TodolistDetailContainer = (props: Props) => {
   const navigate = useNavigate();
   const setTodos = useSetRecoilState(todosState);
   const onChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setTodo({ ...todo, [e.target.name]: e.target.value });
   };
@@ -32,7 +32,7 @@ const TodolistDetailContainer = (props: Props) => {
     if (result) {
       setTodos((todos) => todos.filter((t) => t.id !== todo.id));
       navigate(-1);
-    } else alert("삭제에 실패했습니다.");
+    } else alert('삭제에 실패했습니다.');
   };
 
   useEffect(() => {

@@ -1,8 +1,8 @@
-import React from "react";
-import { Grid } from "@mui/material";
-import { Todo } from "../../../../Apis/types";
-import ListHeader from "../lists/Header";
-import Lists from "../lists/Lists";
+import React from 'react';
+import { Grid } from '@mui/material';
+import { Todo } from '../../../../Apis/types';
+import ListHeader from '../lists/Header';
+import Lists from '../lists/Lists';
 type Props = {
   todos: Todo[];
 };
@@ -18,23 +18,23 @@ const TodoListPresenter = ({ todos }: Props) => {
       height="100vh"
       direction="column"
       p={2}
-      sx={{ borderRight: "1px solid primary.main" }}
+      sx={{ borderRight: '1px solid primary.main' }}
     >
       <ListHeader />
       <Grid
         item
         container
-        flexWrap={"nowrap"}
-        direction={"column"}
+        flexWrap={'nowrap'}
+        direction={'column'}
         overflow="scroll"
         sx={{
-          "scrollbar-width": "none",
-          "&::-webkit-scrollbar": {
-            width: "0px",
-            background: "transparent",
+          'scrollbar-width': 'none',
+          '&::-webkit-scrollbar': {
+            width: '0px',
+            background: 'transparent',
           },
 
-          scrollbarWidth: "thin",
+          scrollbarWidth: 'thin',
         }}
         flex={1}
       >
