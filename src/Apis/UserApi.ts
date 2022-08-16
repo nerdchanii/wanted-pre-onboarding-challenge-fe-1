@@ -1,8 +1,7 @@
-import { AxiosError, AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig } from "axios";
 import { AUTH_API_URL } from "./constants";
 import {
   InterfaceApiCaller,
-  InterfaceAuthApiErrorResponse,
   InterfaceAuthApiResponse,
   InterfaceAuthenticationRequest,
   InterfaceAuthApi,
@@ -13,39 +12,31 @@ class AuthApi implements InterfaceAuthApi {
   constructor(private ApiCallBehavior: InterfaceApiCaller) {
     this.API_URL = AUTH_API_URL;
   }
-  
-  async login(loginForm: InterfaceAuthenticationRequest) {
-    return await this.call(this.API_URL.LOGIN(), loginForm);
+
+  login(loginForm: InterfaceAuthenticationRequest) {
+    return this.call(this.API_URL.LOGIN(), loginForm);
   }
 
-  async signup(signupForm: InterfaceAuthenticationRequest) {
-    return await this.call(this.API_URL.SIGNUP(), signupForm);
+  signup(signupForm: InterfaceAuthenticationRequest) {
+    return this.call(this.API_URL.SIGNUP(), signupForm);
   }
 
-  logout(){
+  logout() {
     return this.ApiCallBehavior.removeAuth();
   }
 
   private async call(url: string, data?: any, config?: AxiosRequestConfig) {
-    try{
-      const response = await this.ApiCallBehavior.post<InterfaceAuthApiResponse>(url, data, config);
-      return this.sucess(response.data);
-    } catch(error){
-      return this.error(error);
-    }
+    const response = await this.ApiCallBehavior.post<InterfaceAuthApiResponse>(
+      url,
+      data,
+      config
+    );
+    return this.sucess(response.data);
   }
-
-
 
   private sucess(responseData: InterfaceAuthApiResponse) {
-    this.ApiCallBehavior.setAuth(responseData.token);
-    return { message: responseData.message , result: true};
-  }
-
-  private error(error:unknown) {
-    if(!(error instanceof AxiosError<InterfaceAuthApiErrorResponse>)) return { message: 'unknown error' , result: false};
-    if(error.response) return{message: error.response.data.details, result: false};
-    return { message: error.message , result: false};
+    return { message: responseData.message, result: true };
   }
 }
+
 export default AuthApi;
