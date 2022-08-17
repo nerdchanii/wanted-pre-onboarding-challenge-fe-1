@@ -6,8 +6,8 @@ import AuthHandler from '../handler/AuthHandler';
 import Login from '../pages/auth/Login';
 import Logout from '../pages/auth/Logout';
 import Signup from '../pages/auth/Signup';
-import Home from '../pages/Home';
-import TodoPage from '../pages/TodoPage';
+import Home from '../pages/home/Home';
+import TodoPage from '../pages/todo/TodoPage';
 
 const IndexRouter = () => {
   return (
