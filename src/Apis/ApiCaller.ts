@@ -33,6 +33,10 @@ class ApiCaller implements InterfaceApiCaller {
         Authorization: token ? token : '',
       },
     });
+    this.interceptor((response) => {
+      if (response.data.token) this.setAuth(response.data.token);
+      return response;
+    });
   }
 
   /**
