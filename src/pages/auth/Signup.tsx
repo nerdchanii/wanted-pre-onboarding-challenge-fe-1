@@ -1,23 +1,14 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { isLoggedIn } from '../../store/authState';
-import Redirections from '../../handler/Redirections';
 import SignupContainer from '../../components/signup/SignupContainer';
+import { Navigate } from 'react-router-dom';
 
 type Props = {};
 
 const Signup = (props: Props) => {
   const isLogin = useRecoilValue(isLoggedIn);
-
-  if (isLogin) {
-    return (
-      <Redirections
-        to="/"
-        message="홈으로 이동합니다"
-        title="이미 로그인중입니다"
-      />
-    );
-  }
+  if (isLogin) return <Navigate to="/" />;
   return <SignupContainer />;
 };
 
