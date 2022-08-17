@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import { isLoggedIn } from '../store/authState';
+import { isLoggedIn } from '../../store/authState';
 import { Navigate } from 'react-router-dom';
 
 const AuthHandler = (WrappedComponent: any) => {
