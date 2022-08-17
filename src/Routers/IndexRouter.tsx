@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import TodolistCreateContainer from '../components/todo/container/TodolistCreateContainer';
 import TodolistDetailContainer from '../components/todo/container/TodolistDetailContainer';
-import AuthHandler from './AuthHandler';
+import AuthHandler from './handler/AuthHandler';
 import Login from '../pages/auth/Login';
 import Logout from '../pages/auth/Logout';
 import Signup from '../pages/auth/Signup';
