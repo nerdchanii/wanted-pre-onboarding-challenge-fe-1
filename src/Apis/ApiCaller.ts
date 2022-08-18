@@ -1,4 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { AUTH_REQUIRED_LIST } from './constants';
 import { InterfaceApiCaller } from './types';
 
 /**
@@ -15,7 +16,7 @@ import { InterfaceApiCaller } from './types';
  */
 class ApiCaller implements InterfaceApiCaller {
   caller: AxiosInstance;
-
+  token: string | null;
   /**
    * Constructor for ApiCaller
    * @interface InterfaceApiCaller
@@ -24,17 +25,35 @@ class ApiCaller implements InterfaceApiCaller {
    * @param {AxiosRequestConfig} config - axios config
    */
   constructor(baseURL: string, config?: AxiosRequestConfig) {
-    const token = localStorage.getItem('token');
+    this.token = localStorage.getItem('token');
     this.caller = axios.create({
       baseURL,
       ...config,
       headers: {
         ...config?.headers,
-        Authorization: token ? token : '',
+        Authorization: this.token || '',
       },
     });
-    this.interceptor((response) => {
-      if (response.data.token) this.setAuth(response.data.token);
+    this.requestInterceptor((config) => {
+      const required = AUTH_REQUIRED_LIST.some((pattern) =>
+        config.url.match(pattern),
+      );
+      if (required) {
+        return {
+          ...config,
+          headers: {
+            ...config.headers,
+            Authorization: this.token,
+          },
+        };
+      }
+      return config;
+    });
+    this.responseInterceptor((response) => {
+      if (response.data.token) {
+        this.token = response.data.token;
+        localStorage.setItem('token', response.data.token);
+      }
       return response;
     });
   }
@@ -96,37 +115,29 @@ class ApiCaller implements InterfaceApiCaller {
     return await this.caller.delete(url, config);
   }
 
-  private interceptor(
+  private responseInterceptor(
     onFulfilled?: (value: any) => any,
     onRejected?: (reason: any) => any,
   ) {
     this.caller.interceptors.response.use(onFulfilled, onRejected);
   }
 
-  /**
-   * set token for api call
-   * @param auth
-   * @returns {void}
-   * @memberof ApiCaller
-   */
-  setAuth<T>(auth: T): void {
-    if (typeof auth === 'string') {
-      this.caller.defaults.headers.common['Authorization'] = auth;
-      localStorage.setItem('token', auth);
-    }
-    /** JWT토큰이 아닐 경우 */
+  private requestInterceptor(
+    onFulfilled?: (value: any) => any,
+    onRejected?: (reason: any) => any,
+  ) {
+    this.caller.interceptors.request.use(onFulfilled, onRejected);
   }
 
   /**
-   * remove token for api call
-   * @returns {void}
+   * remove Authorization header from axios config
+   * @interface InterfaceApiCaller
    * @memberof ApiCaller
-   * @example
-   * apiCaller.removeAuth();
+   * @returns {void}
    */
   removeAuth(): void {
+    this.token = null;
     localStorage.removeItem('token');
-    this.caller.defaults.headers.common['Authorization'] = '';
   }
 }
 
