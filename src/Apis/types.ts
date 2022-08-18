@@ -24,7 +24,6 @@ export interface InterfaceApiCaller {
     config?: AxiosRequestConfig,
   ): Promise<AxiosResponse<T>>;
   removeAuth(): void;
-  setAuth<T>(auth: T): void;
 }
 
 export interface InterfaceAuthApiResponse {

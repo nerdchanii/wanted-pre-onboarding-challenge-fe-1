@@ -10,3 +10,5 @@ export const AUTH_API_URL = {
   LOGIN: () => '/users/login',
   SIGNUP: () => '/users/create',
 };
+
+export const AUTH_REQUIRED_LIST = [/\/todos/];
