@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import { TodoContent } from '../../../Apis/types';
-import todoService from '../../../services/todo.service';
+import { TodoContent } from '@apis/types';
+import todoService from '@services/todo.service';
 import todosState from '../../../store/todosState';
 import CreateItemPresenter from '../UI/presenter/CreateItemPresenter';
 

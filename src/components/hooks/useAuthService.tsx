@@ -1,11 +1,11 @@
 import {
   InterfaceAuthenticationRequest,
   InterfaceAuthServiceReturn,
-} from '../../Apis/types';
+} from '@apis/types';
 import { useSetRecoilState } from 'recoil';
 import { authState } from '../../store/authState';
 import { useCallback, useState } from 'react';
-import authService from '../../services/auth.service';
+import authService from '@services/auth.service';
 
 type AuthServiceMethod = 'login' | 'signup' | 'logout';
 

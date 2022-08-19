@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import IndexRouter from './Routers/IndexRouter';
+import IndexRouter from './routers/IndexRouter';
 
 function App() {
   return <IndexRouter />;

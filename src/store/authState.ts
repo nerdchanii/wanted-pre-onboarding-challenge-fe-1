@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil';
-import { getAuth } from '../utils/jwt';
+import { getAuth } from '@utils/jwt';
 // auth Atom
 
 interface IauthState {

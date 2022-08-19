@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
-import { Todo } from '../../../Apis/types';
-import todoService from '../../../services/todo.service';
+import { Todo } from '@apis/types';
+import todoService from '@services/todo.service';
 import todosState from '../../../store/todosState';
 import TodolistDetailPresenter from '../UI/presenter/DetailsPresenter';
 
