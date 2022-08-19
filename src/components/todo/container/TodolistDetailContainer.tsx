@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Todo } from '@apis/types';
 import TodolistDetailPresenter from '../UI/presenter/DetailsPresenter';
-import { useDeleteTodo } from '@/components/hooks/todos';
-import { useUpdateTodo } from '@/components/hooks/todos';
-import { useGetTodo } from '@/components/hooks/todos';
+import { useDeleteTodo } from '@hooks/todos';
+import { useUpdateTodo } from '@hooks/todos';
+import { useGetTodo } from '@hooks/todos';
 
 type Props = {};
 

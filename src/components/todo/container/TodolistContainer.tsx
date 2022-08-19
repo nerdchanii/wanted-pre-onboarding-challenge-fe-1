@@ -1,6 +1,6 @@
 import React from 'react';
 import TodoListPresenter from '../UI/presenter/TodoListPresenter';
-import { useGetTodos } from '@/components/hooks/todos';
+import { useGetTodos } from '@hooks/todos';
 
 type Props = {};
 

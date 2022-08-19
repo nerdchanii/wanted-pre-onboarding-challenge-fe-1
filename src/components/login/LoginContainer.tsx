@@ -1,13 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAuthService from '../hooks/useAuthService';
+import { useLogin } from '@hooks/auth';
 import LoginPresenter from './LoginPresenter';
 import { loginValidator } from '@utils/validator';
+import { useMutation } from '@tanstack/react-query';
 type Props = {};
 
 const LoginContainer = (props: Props) => {
   const navigate = useNavigate();
-  const [loading, login] = useAuthService('login');
+  const { login, isLoading } = useLogin();
+
   const [alertMessages, setAlertMessages] = React.useState<string[]>([]);
   const [loginForm, setLoginForm] = React.useState({
     email: '',
@@ -37,7 +39,7 @@ const LoginContainer = (props: Props) => {
       loginSubmit={loginSubmit}
       loginInputValues={loginForm}
       onChangeInputs={onChangeInputs}
-      loading={loading}
+      loading={isLoading}
       alertMessages={alertMessages}
       setAlertMessages={setAlertMessages}
       isValidEmail={formValidations.isValidEmail}

@@ -10,8 +10,8 @@ const decode = (token: string) => {
   }
 };
 
-export const getAuth = (token: string) => {
+export const getTokenData = (token: string) => {
   return decode(token);
 };
 
-export default { getAuth };
+export default { getTokenData };

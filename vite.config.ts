@@ -33,6 +33,7 @@ export default defineConfig(({ command, mode }) => {
         '@apis': resolve(__dirname, '/src/Apis'),
         '@services': resolve(__dirname, '/src/services'),
         '@utils': resolve(__dirname, '/src/utils'),
+        '@hooks': resolve(__dirname, '/src/hooks'),
       },
     },
   };

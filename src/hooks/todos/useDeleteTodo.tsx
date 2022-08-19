@@ -1,4 +1,4 @@
-import todoService from '@/services/todo.service';
+import todoService from '@services/todo.service';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { KEY } from './index';
 
