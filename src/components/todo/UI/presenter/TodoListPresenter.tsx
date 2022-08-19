@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import { Todo } from '../../../../apis/types';
+import { Todo } from '@apis/types';
 import ListHeader from '../lists/Header';
 import Lists from '../lists/Lists';
 type Props = {

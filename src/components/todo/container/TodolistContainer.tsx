@@ -2,7 +2,7 @@ import { Circle } from '@mui/icons-material';
 import { LinearProgress } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import todoService from '../../../services/todo.service';
+import todoService from '@services/todo.service';
 import todosState from '../../../store/todosState';
 import TodoListPresenter from '../UI/presenter/TodoListPresenter';
 

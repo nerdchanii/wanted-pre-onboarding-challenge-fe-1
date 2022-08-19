@@ -1,6 +1,5 @@
-import { InterfaceTodoApi, Todo } from '../apis/types';
-import { TodoContent } from '../apis/types';
-import { todoApis } from '../apis/Apis';
+import { InterfaceTodoApi, Todo, TodoContent } from '@apis/types';
+import { todoApis } from '@apis/Apis';
 
 class TodoService {
   private api: InterfaceTodoApi;

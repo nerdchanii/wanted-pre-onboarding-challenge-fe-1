@@ -1,6 +1,6 @@
 import { Button, Card, Grid } from '@mui/material';
 import React from 'react';
-import { TodoContent } from '../../../../apis/types';
+import { TodoContent } from '@apis/types';
 import TodoItem from '../../TodoItem';
 
 type Props = {

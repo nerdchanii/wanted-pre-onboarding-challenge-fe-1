@@ -1,5 +1,5 @@
 import React from 'react';
-import { Todo } from '../../../../apis/types';
+import { Todo } from '@apis/types';
 import TodoDate from '../Atoms/TodoDate';
 import TodoItem from '../../TodoItem';
 import DetailActionButtons from '../molcules/DetailActionButtons';

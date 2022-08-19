@@ -1,6 +1,6 @@
 import { Grid, LinearProgress } from '@mui/material';
 import React from 'react';
-import { Todo } from '../../../../apis/types';
+import { Todo } from '@apis/types';
 import TodolistItem from './Item';
 
 type Props = {

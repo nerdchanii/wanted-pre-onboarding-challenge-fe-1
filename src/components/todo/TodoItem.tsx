@@ -2,7 +2,7 @@ import React from 'react';
 import { CardContent, Divider, SxProps } from '@mui/material';
 import TodoContent from './UI/Atoms/TodoContent';
 import TodoTitle from './UI/Atoms/TodoTitle';
-import { TodoContent as TypeTodoContent } from '../../apis/types';
+import { TodoContent as TypeTodoContent } from '@apis/types';
 
 const TodoItem = ({
   todo: { title, content },

@@ -1,4 +1,4 @@
-import { InterfaceAuthenticationRequest } from '../apis/types';
+import { InterfaceAuthenticationRequest } from '@apis/types';
 
 interface InterfaceAuthRequestFormData extends InterfaceAuthenticationRequest {
   passwordConfirm: string;
