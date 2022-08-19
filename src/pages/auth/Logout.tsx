@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import useAuthService from '@hooks/useAuthService';
+import { useLogout } from '@hooks/auth';
 
 type Props = {};
 
 const Logout = (props: Props) => {
-  const [, logout] = useAuthService('logout');
+  const logout = useLogout();
   useEffect(() => {
     logout();
   }, [logout]);

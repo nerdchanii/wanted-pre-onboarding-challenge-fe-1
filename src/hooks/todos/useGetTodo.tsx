@@ -8,6 +8,7 @@ export default (id: string) => {
     [KEY, id],
     todoService.getTodoById.bind(todoService, id),
     {
+      suspense: true,
       onError: (error) => {
         console.log('error', error);
       },

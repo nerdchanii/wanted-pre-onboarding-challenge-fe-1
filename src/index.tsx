@@ -30,11 +30,6 @@ const client = new QueryClient({
     warn: console.log,
     log: console.log,
   },
-  defaultOptions: {
-    queries: {
-      suspense: true,
-    },
-  },
 });
 
 root.render(
