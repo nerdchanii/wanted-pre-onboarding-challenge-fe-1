@@ -1,19 +1,27 @@
 import React, { useEffect } from 'react';
-import { Navigate, useNavigate, useParams } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Todo } from '@apis/types';
-import todoService from '@services/todo.service';
-import todosState from '../../../store/todosState';
 import TodolistDetailPresenter from '../UI/presenter/DetailsPresenter';
+import { useDeleteTodo } from '@/components/hooks/todos';
+import { useUpdateTodo } from '@/components/hooks/todos';
+import { useGetTodo } from '@/components/hooks/todos';
 
 type Props = {};
 
 const TodolistDetailContainer = (props: Props) => {
   const { id } = useParams();
   const [canEdit, setCanEdit] = React.useState(false);
-  const [todo, setTodo] = React.useState<Todo>({} as Todo);
   const navigate = useNavigate();
-  const setTodos = useSetRecoilState(todosState);
+  const { data, error, isError } = useGetTodo(id!);
+  const { mutate: update } = useUpdateTodo(id!);
+  const { mutateAsync: deleteTodo, isError: deleteError } = useDeleteTodo(id!);
+  const [todo, setTodo] = React.useState<Todo>(data!);
+
+  useEffect(() => {
+    setTodo(data!);
+    console.log(data);
+  }, [data]);
+
   const onChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
@@ -21,31 +29,15 @@ const TodolistDetailContainer = (props: Props) => {
   };
 
   const onSave = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    const { result } = await todoService.updateTodo(todo);
-    if (result)
-      setTodos((todos) => todos.map((t) => (t.id === todo.id ? todo : t)));
-    setCanEdit(false);
+    update(todo);
   };
 
   const onRemove = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    const { result } = await todoService.deleteTodo(todo.id);
-    if (result) {
-      setTodos((todos) => todos.filter((t) => t.id !== todo.id));
-      navigate(-1);
-    } else alert('삭제에 실패했습니다.');
+    await deleteTodo();
+    if (!deleteError) navigate(-1);
   };
 
-  useEffect(() => {
-    async function fetchTodo() {
-      if (id !== undefined) {
-        const todo = await todoService.getTodoById(id);
-        setTodo(todo);
-      }
-    }
-    fetchTodo();
-  }, [id]);
-
-  if (todo.id !== undefined) {
+  if (todo !== undefined) {
     return (
       <TodolistDetailPresenter
         editable={canEdit}

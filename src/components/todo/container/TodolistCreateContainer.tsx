@@ -1,14 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSetRecoilState } from 'recoil';
 import { TodoContent } from '@apis/types';
-import todoService from '@services/todo.service';
-import todosState from '../../../store/todosState';
 import CreateItemPresenter from '../UI/presenter/CreateItemPresenter';
+import { useCreateTodo } from '@/components/hooks/todos';
 
 const TodolistCreateContainer = () => {
   const navigate = useNavigate();
-  const setTodos = useSetRecoilState(todosState);
+  const { mutateAsync: create } = useCreateTodo();
   const [todoContent, setTodoContent] = React.useState<TodoContent>({
     title: '',
     content: '',
@@ -20,8 +18,7 @@ const TodolistCreateContainer = () => {
   };
 
   const onCreate = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    const todo = await todoService.createTodo(todoContent);
-    setTodos((todos) => [...todos, todo]);
+    const todo = await create(todoContent);
     navigate(`/todos/${todo.id}`, { replace: true });
   };
 

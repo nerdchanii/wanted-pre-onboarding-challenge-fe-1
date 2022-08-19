@@ -8,25 +8,33 @@ class TodoService {
     this.api = todoApis;
   }
 
-  async getTodos() {
+  getTodos = async () => {
     return await this.api.getTodos();
-  }
+  };
 
-  async getTodoById(id: string) {
+  getTodoById = async (id: string) => {
     return await this.api.getTodoById(id);
-  }
+  };
 
-  async createTodo(todo: TodoContent) {
+  createTodo = async (todo: TodoContent) => {
     return await this.api.createTodo(todo);
-  }
+  };
 
-  async updateTodo(todo: Todo): Promise<any> {
+  updateTodo = async (todo: Todo): Promise<any> => {
     return await this.api.updateTodo(todo);
-  }
+  };
 
-  async deleteTodo(id: string): Promise<any> {
+  deleteTodo = async (id: string): Promise<any> => {
     return await this.api.deleteTodo(id);
-  }
+  };
 }
 
 export default new TodoService();
+
+export const TODO_SERVICE_KEYS = {
+  GET_TODOS: 'getTodos',
+  GET_TODO_BY_ID: 'getTodoById',
+  CREATE_TODO: 'createTodo',
+  UPDATE_TODO: 'updateTodo',
+  DELETE_TODO: 'deleteTodo',
+} as const;
