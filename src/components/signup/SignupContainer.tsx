@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignupPresenter from './SignupPresenter';
-import useAuthService from '../hooks/useAuthService';
+import useAuthService from '@hooks/useAuthService';
 import { signUpValidator } from '@utils/validator';
 
 // 상태와 action, api 주입

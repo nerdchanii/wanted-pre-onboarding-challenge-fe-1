@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TodoContent } from '@apis/types';
 import CreateItemPresenter from '../UI/presenter/CreateItemPresenter';
-import { useCreateTodo } from '@/components/hooks/todos';
+import { useCreateTodo } from '@hooks/todos';
 
 const TodolistCreateContainer = () => {
   const navigate = useNavigate();

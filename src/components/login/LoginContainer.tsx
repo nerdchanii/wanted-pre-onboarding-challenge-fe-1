@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import useAuthService from '../hooks/useAuthService';
+import useAuthService from '@hooks/useAuthService';
 import LoginPresenter from './LoginPresenter';
 import { loginValidator } from '@utils/validator';
 type Props = {};

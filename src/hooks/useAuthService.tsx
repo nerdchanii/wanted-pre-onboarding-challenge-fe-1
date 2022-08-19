@@ -3,7 +3,7 @@ import {
   InterfaceAuthServiceReturn,
 } from '@apis/types';
 import { useSetRecoilState } from 'recoil';
-import { authState } from '../../store/authState';
+import { authState } from '../store/authState';
 import { useCallback, useState } from 'react';
 import authService from '@services/auth.service';
 

@@ -21,7 +21,8 @@
       "@/*": ["./src/*"],
       "@services/*": ["./src/services/*"],
       "@apis/*": ["./src/apis/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@hooks/*": ["./src/hooks/*"]
     }
   },
   "include": ["src"],

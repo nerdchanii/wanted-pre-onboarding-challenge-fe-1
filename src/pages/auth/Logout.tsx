@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import useAuthService from '../../components/hooks/useAuthService';
+import useAuthService from '@hooks/useAuthService';
 
 type Props = {};
 
