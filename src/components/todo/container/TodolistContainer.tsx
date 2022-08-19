@@ -1,30 +1,21 @@
-import { Circle } from '@mui/icons-material';
-import { LinearProgress } from '@mui/material';
-import React, { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
-import todoService from '@services/todo.service';
-import todosState from '../../../store/todosState';
+import React from 'react';
 import TodoListPresenter from '../UI/presenter/TodoListPresenter';
+import { useGetTodos } from '@/components/hooks/todos';
 
 type Props = {};
 
 const TodoListContainer = (props: Props) => {
-  const [todos, setTodos] = useRecoilState(todosState);
-  const [loading, setLoading] = React.useState(false);
+  const { todos, isError, isLoading } = useGetTodos();
 
-  useEffect(() => {
-    async function fetchData() {
-      setLoading(true);
-      const FetchedTodos = await todoService.getTodos();
-      setTodos(FetchedTodos);
-      setLoading(false);
-    }
-    fetchData();
-  }, [setTodos]);
-
-  if (loading) return <LinearProgress />;
-
-  return <TodoListPresenter todos={todos} />;
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+  if (isError) {
+    console.log(isError);
+    return <div>다시 시도해주세요</div>;
+  }
+  if (todos) return <TodoListPresenter todos={todos} />;
+  return <div>다시 시도해주세요</div>;
 };
 
 export default TodoListContainer;
