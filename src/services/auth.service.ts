@@ -1,8 +1,8 @@
-import { authApis } from '../Apis/Apis';
+import { authApis } from '@apis/Apis';
 import {
   InterfaceAuthApi,
   InterfaceAuthenticationRequest,
-} from '../Apis/types';
+} from '../apis/types';
 
 class AuthService {
   private api: InterfaceAuthApi;

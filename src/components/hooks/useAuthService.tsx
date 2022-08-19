@@ -1,7 +1,7 @@
 import {
   InterfaceAuthenticationRequest,
   InterfaceAuthServiceReturn,
-} from '../../Apis/types';
+} from '../../apis/types';
 import { useSetRecoilState } from 'recoil';
 import { authState } from '../../store/authState';
 import { useCallback, useState } from 'react';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardContent, CardHeader } from '@mui/material';
-import { Todo } from '../../../../Apis/types';
+import { Todo } from '../../../../apis/types';
 import TodoDate from '../Atoms/TodoDate';
 import ItemLayout from './ItemLayout';
 

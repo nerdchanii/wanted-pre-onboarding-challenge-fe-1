@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { Todo } from '../Apis/types';
+import { Todo } from '../apis/types';
 
 const todosState = atom<Todo[]>({
   key: 'todosState',
