@@ -1,4 +1,4 @@
-import { Todo } from '@/apis/types';
+import { Todo } from '@apis/types';
 import todoService from '@/services/todo.service';
 import { useQuery } from '@tanstack/react-query';
 import { KEY } from './index';

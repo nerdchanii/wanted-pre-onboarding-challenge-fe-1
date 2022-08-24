@@ -5,7 +5,7 @@ import { useSetRecoilState } from 'recoil';
 export default () => {
   const setAuth = useSetRecoilState(authState);
   return () => {
-    authService.logout.bind(authService);
+    authService.logout.apply(authService);
     setAuth(null);
   };
 };

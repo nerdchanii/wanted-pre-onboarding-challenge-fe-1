@@ -14,6 +14,7 @@ const IndexRouter = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/todos" element={AuthHandler(TodoPage)}>
+        <Route path="" element={<TodolistCreateContainer />} />
         <Route path="new" element={<TodolistCreateContainer />} />
         <Route path=":id" element={<TodolistDetailContainer />} />
       </Route>

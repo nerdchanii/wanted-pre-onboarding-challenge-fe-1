@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import { Grid } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import TodoListContainer from '../../components/todo/container/TodolistContainer';
-import ErrorBoundary from '@/Routers/handler/ErrorBoundary';
+import ErrorBoundary from '@/routers/handler/ErrorBoundary';
 import Error from '@/components/fallback/Error';
 import Fallback from '@/components/fallback/Fallback';
 type Props = {};
